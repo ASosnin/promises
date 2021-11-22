@@ -1,3 +1,4 @@
+import GameSaving from './GameSaving';
 import read from './reader';
 import json from './parser';
 
@@ -6,7 +7,7 @@ export default class GameSavingLoader {
     return Promise.resolve(
       read()
         .then((result) => json(result))
-        .then((result) => JSON.parse(result)),
+        .then((result) => new GameSaving(result)),
     );
   }
 }
